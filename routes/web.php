@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\ConfirmadoController;
+use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\SospechosoController;
 use App\Http\Controllers\DefuncionController;
 use App\Http\Controllers\NegativoController;
-use App\Http\Controllers\SospechosoController;
 use App\Http\Controllers\TotalCasosController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
 Route::get('/', function () {
@@ -36,9 +31,12 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/estados/getEstados', [EstadoController::class,'getEstados']);
 Route::resource('/estados',EstadoController::class);
-Route::get('/getEstados',EstadoController::class);
 Route::resource('/confirmados',ConfirmadoController::class);
+
+//Route::resource('/estados',EstadoController::class);
+//Route::resource('/confirmados',ConfirmadoController::class);
 
 /*Route::resource('/defunciones',DefuncionController::class);
 Route::resource('/negativos',NegativoController::class);

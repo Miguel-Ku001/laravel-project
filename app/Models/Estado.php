@@ -12,13 +12,13 @@ class Estado extends Model
     use HasFactory;
 
     protected $table = 'estados';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'ID';
     public $incrementing = false;
     public $timestamps = false;
-    protected $attributes = ['poblacion', 'nombre', 'code'];
+    protected $attributes = ['POBLACION', 'NOMBRE', 'codigo_nombre'];
 
-    public function confirmados() {
-        return $this->hasMany(Confirmado::class, 'ESTADO_ID');
+    public function confirmados(): HasMany {
+        return $this->hasMany(Confirmado::class);
     }
     
 }

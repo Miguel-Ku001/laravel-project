@@ -16,8 +16,14 @@ class EstadoController extends Controller
     }
 
     public function index() {
-        foreach (Estado::get() as $estado) {
+        /*foreach (Estado::get() as $estado) {
             echo "<B>".$estado->NOMBRE."</B><br>";
-        }
+        }*/
+
+        return view('estados.index');
+    }
+
+    public function getEstados(){
+        return response()->json(Estado::get());
     }
 }
