@@ -20,7 +20,7 @@ class EstadoController extends Controller
             echo "<B>".$estado->NOMBRE."</B><br>";
         }*/
 
-        return view('estados.index');
+        return view('casos.index');
     }
 
     public function getEstados(){

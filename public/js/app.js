@@ -5086,18 +5086,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      colums: [{
+      columns: [{
         label: 'id',
-        field: 'id'
+        field: 'ID'
       }, {
         label: 'nombre',
-        field: 'nombre'
+        field: 'NOMBRE'
       }, {
         label: 'poblacion',
-        field: 'poblacion'
+        field: 'POBLACION'
       }, {
         label: 'code',
-        field: 'code'
+        field: 'codigo_estado'
       }],
       rows: [],
       page: 1,
@@ -27971,11 +27971,11 @@ var render = function () {
           columns: _vm.columns,
           data: _vm.rows,
           filter: _vm.filter,
-          "per-page": _vm.per - _vm.Page,
+          "per-page": _vm.perPage,
         },
       }),
       _vm._v(" "),
-      _c("bootstrap-4-datatable-pager-pager", {
+      _c("bootstrap-4-datatable-pager", {
         attrs: { type: "abbreviated" },
         model: {
           value: _vm.page,
