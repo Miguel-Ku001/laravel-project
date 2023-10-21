@@ -20,8 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/charts', function () {
-    return view('chart');
+Route::get('/graficas', function () {
+    return view('grafica');
 });
 
 Route::get('/dashboard', function () {
@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::resource('/charts',ChartController::class);
 
 Route::get('/estados/getEstados', [EstadoController::class,'getEstados']);
 Route::resource('/estados',EstadoController::class);
@@ -52,14 +54,3 @@ Route::get('/sospechosos/getSospechosos', [SospechosoController::class,'getSospe
 Route::resource('/sospechosos',SospechosoController::class);
 
 Route::get('/show-chart',[ChartController::class,'showMap']);
-
-
-//Route::resource('/estados',EstadoController::class);
-//Route::resource('/confirmados',ConfirmadoController::class);
-
-/*Route::resource('/defunciones',DefuncionController::class);
-Route::resource('/negativos',NegativoController::class);
-Route::resource('/sospechosos',SospechosoController::class);*/
-
-//Route::get('/total-casos', [TotalCasosController::class, 'totalCasos']);
-//Route::get('/total-casos-estado/{id}', [TotalCasosController::class, 'totalCasosPorEstado']);
