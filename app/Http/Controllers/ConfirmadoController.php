@@ -8,30 +8,7 @@ use App\Models\Estado;
 
 class ConfirmadoController extends Controller
 {
-    /*public function show(string $id): View 
-    {
-        
-        dd(Confirmado::find($id));
-    }
-
-    public function totalConfirmados() {
-        $totalSumConfirmados = Confirmado::sum('CASOS');
-        return $totalSumConfirmados;
-    }*/
-
-    /*public function confirmadosPorEstado() {
-        $estados = Estado::all();
-        $casosPorEstado = [];
-
-        foreach ($estados as $estado) {
-            $casosPorEstado[$estado->id] = [
-                'confirmados' => Confirmado::sum('CASOS')
-            ];
-        }
-
-        return $casosPorEstado;
-    }*/
-
+    
     public function getCasosConfirmados(){
         $confirmados = Confirmado::all();
         $totalCasos = $confirmados->sum('CASOS');
@@ -51,17 +28,22 @@ class ConfirmadoController extends Controller
         foreach ($estados as $estado) {
             $casosE = $estado->confirmados->sum('CASOS');
             $totalCasos += $casosE;
-            echo "Casos por el estado <B>".$estado->NOMBRE."</B> :".$casosE."<br>";
+            echo "<B>".$estado->NOMBRE."</B> :".$casosE."<br>";
         }
-        echo "Casos totales confirmados: ".$totalCasos;
+        echo "</br><B>Casos totales confirmados:</B> ".$totalCasos;
     }
 
     public function index() {
+        echo "<B> SUMA DE CASOS CONFIRMADOS POR ESTADO </B><br><br>";
         self::getCasosDesglosados();
     }
     
     public function show($idEstado){
         self::getCasosConfirmadosEstado($idEstado);
+    }
+
+    public function getConfirmados(){
+        return response()->json(Confirmado::get());
     }
 
 }
